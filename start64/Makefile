@@ -5,7 +5,7 @@ OBJECTS=BoundedBuffer.o diagnostics.o freesectordescriptorstore.o \
         diskdevice.o diskdriver.o
 
 my_demo: $(OBJECTS)
-	cc -o my_demo $(OBJECTS) -lpthread
+	cc -o my_demo $(OBJECTS) -lpthread -no-pie
 
 clean:
 	rm -f diskdriver.o my_demo
