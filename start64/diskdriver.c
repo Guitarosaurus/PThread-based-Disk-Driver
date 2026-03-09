@@ -1,93 +1,76 @@
 #include "diskdevice.h"
 #include "freesectordescriptorstore.h"
 #include "freesectordescriptorstore_full.h"
+#include "sectordescriptorcreator.h"
 #include "BoundedBuffer.h"
 #include "voucher.h"
 #include "diskdevice.h"
 #include "diskdevice_full.h"
+#include "generic_queue.h"
 #include <pthread.h>
 #include <stdio.h>
 
-BoundedBuffer *write_queue, *read_queue;
+BoundedBuffer *write_buffer, *read_buffer;
+GQueue *write_queue, *read_queue;
 DiskDevice *dd;
+
+typedef struct voucher {
+    Pid pid;
+} Voucher;
+
 
 void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length, FreeSectorDescriptorStore **fsds){
     // First initalise fsds
     printf("I have entered the disk_driver_initalisation");
     *fsds = create_fsds();
     // Then populate with sector descriptors - like this
-    // Think this needs to be a loop for the mem section, each sector descriptor = 64 bytes = 512 bytes
-    // for(int i = mem_start; i < (mem_length + mem_start); i+=512){
-    SectorDescriptor **sd;
-    init_sector_descriptor(*sd);
-    blocking_get_sd(*fsds, sd);
-    blocking_put_sd(*fsds, *sd);
-    printf("This is the value of sd: %li", sector_descriptor_get_pid(*sd));
+    // Uses methof in sectordescriptorcreator
+    create_free_sector_descriptors(*fsds, mem_start, mem_length);
     // Initialise two bounded buffer queues - no. of items can change
-    write_queue = createBB(200);
-    read_queue = createBB(200);
+    write_buffer = createBB(64);
+    read_buffer = createBB(64);
 
     dd = construct_disk_device();
-
-    // Create a thread that is always reading and one which is always writing
-    pthread_t w;
-    pthread_create(&w, NULL, write_sector(dd, blockingReadBB(write_queue)), NULL);
-    pthread_t r;
-    pthread_create(&r, NULL, read_sector(dd, blockingReadBB(read_queue)), NULL);
-}
-
-
-/**
- * Think this is a lazy way to do this and may not even be correct for the threads
- */
-void* blockingWriteBBThreadEdition(BoundedBuffer *bb, SectorDescriptor *sd){
-    blockingWriteBB(bb, sd);
-    return NULL;
 }
 
 /**
  * Return promptly, but will have delay whilst it waits for space in buffer
  * 
- * Voucher = threadid and can be used to reference in further functions
+ * Add sd to queue and return voucher that has pid of process
 */
 void blocking_write_sector(SectorDescriptor *sd, Voucher **v){ 
-    pthread_t t_id;
-    pthread_create(&t_id, NULL, blockingWriteBBThreadEdition(write_queue, sd), NULL);
+    gqueue_enqueue(write_queue, sd);
+    (*v)->pid = sector_descriptor_get_pid(sd);
 }
 
 /**
  * Return instant, 0 if buffer full
  */
 int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
-    pthread_t t;
-    pthread_create(&t, NULL, nonblockingWriteBB(read_queue, sector_descriptor_get_block(sd)), NULL);
-    // If unsuccessful release thread and return 0
-    if(t == 0) {
-        pthread_join(t, NULL);
+    int result = gqueue_enqueue(write_queue, sd);
+    // If unsuccessful dont return voucher and return 0
+    if(result == 0) {
         return 0;
     }
     // Else return success and set voucher
     else { 
-        v = t;
+        (*v)->pid = sector_descriptor_get_pid(sd);
         return 1; 
     }
 }
 
 void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
-    pthread_t t;
-    pthread_create(&t, NULL, blockingReadBB(read_queue), NULL);
-    v = t;
+    gqueue_enqueue(read_queue, sd);
+    (*v)->pid = sector_descriptor_get_pid(sd);
 }
 
 int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
-    pthread_t t;
-    pthread_create(&t, NULL, nonblockingReadBB(read_queue, sector_descriptor_get_block(sd)), NULL);
+    int result = gqueue_enqueue(read_queue, sd);
 
-    if(t == 0){
-        pthread_join(t, NULL);
+    if(result == 0){
         return 0;
     } else {
-        v = t;
+        (*v)->pid = sector_descriptor_get_pid(sd);
         return 1;
     }
 }
@@ -101,13 +84,7 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
  * 
  * Read will return a value, write will not but will require the sector be added back to free sector descriptor store
  */
-int redeem_voucher(Voucher *v, SectorDescriptor **sd){
-    // pthread_join will wait for termination of thread
-    void * status;
-    pthread_join(v, &status);
-    
-    // If status = 0, then success, determine whether it was a read or write
-
+int redeem_voucher(Voucher *v, SectorDescriptor **sd){    
 
     printf("%li", sector_descriptor_get_pid(*sd));
 }
