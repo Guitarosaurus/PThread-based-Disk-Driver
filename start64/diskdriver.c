@@ -17,12 +17,12 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     *fsds = create_fsds();
     // Then populate with sector descriptors - like this
     // Think this needs to be a loop for the mem section, each sector descriptor = 64 bytes = 512 bytes
-    for(int i = mem_start; i < (mem_length + mem_start); i+=512){
-        SectorDescriptor **sd;
-        blocking_get_sd(*fsds, sd);
-        blocking_put_sd(*fsds, *sd);
-        printf("This is the value of sd: %i", sector_descriptor_get_pid(sd));
-    }
+    // for(int i = mem_start; i < (mem_length + mem_start); i+=512){
+    SectorDescriptor **sd;
+    init_sector_descriptor(*sd);
+    blocking_get_sd(*fsds, sd);
+    blocking_put_sd(*fsds, *sd);
+    printf("This is the value of sd: %li", sector_descriptor_get_pid(*sd));
     // Initialise two bounded buffer queues - no. of items can change
     write_queue = createBB(200);
     read_queue = createBB(200);
@@ -60,7 +60,7 @@ void blocking_write_sector(SectorDescriptor *sd, Voucher **v){
  */
 int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
     pthread_t t;
-    pthread_create(&t, NULL, nonblockingWriteBB(read_queue, sd), NULL);
+    pthread_create(&t, NULL, nonblockingWriteBB(read_queue, sector_descriptor_get_block(sd)), NULL);
     // If unsuccessful release thread and return 0
     if(t == 0) {
         pthread_join(t, NULL);
@@ -76,11 +76,12 @@ int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
 void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
     pthread_t t;
     pthread_create(&t, NULL, blockingReadBB(read_queue), NULL);
+    v = t;
 }
 
 int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
     pthread_t t;
-    pthread_create(&t, NULL, nonblockingReadBB(read_queue, sd), NULL);
+    pthread_create(&t, NULL, nonblockingReadBB(read_queue, sector_descriptor_get_block(sd)), NULL);
 
     if(t == 0){
         pthread_join(t, NULL);
@@ -102,9 +103,11 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
  */
 int redeem_voucher(Voucher *v, SectorDescriptor **sd){
     // pthread_join will wait for termination of thread
-    void ** status;
+    void * status;
     pthread_join(v, &status);
     
     // If status = 0, then success, determine whether it was a read or write
-    
+
+
+    printf("%li", sector_descriptor_get_pid(*sd));
 }
