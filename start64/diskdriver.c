@@ -18,6 +18,14 @@ typedef struct voucher {
     Pid pid;
 } Voucher;
 
+void * read_thread_method(DiskDevice *DD, BoundedBuffer *BB){
+    // Load up sd - blocking read
+    void * item = blockingReadBB(BB);
+    // Read/write to disk
+    int success = read_sector(DD, item);
+    // Read - return result, write free sd and set sd pointer == null
+    
+}
 
 void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length, FreeSectorDescriptorStore **fsds){
     // First initalise fsds
@@ -27,8 +35,8 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     // Uses methof in sectordescriptorcreator
     create_free_sector_descriptors(*fsds, mem_start, mem_length);
     // Initialise two bounded buffer queues - no. of items can change
-    write_buffer = createBB(64);
-    read_buffer = createBB(64);
+    write_buffer = createBB(10);
+    read_buffer = createBB(10);
 
     dd = construct_disk_device();
 }
@@ -39,7 +47,8 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
  * Add sd to queue and return voucher that has pid of process
 */
 void blocking_write_sector(SectorDescriptor *sd, Voucher **v){ 
-    gqueue_enqueue(write_queue, sd);
+    blockingWriteBB(write_buffer, sd);
+    // gqueue_enqueue(write_queue, sd);
     (*v)->pid = sector_descriptor_get_pid(sd);
 }
 
@@ -47,7 +56,8 @@ void blocking_write_sector(SectorDescriptor *sd, Voucher **v){
  * Return instant, 0 if buffer full
  */
 int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
-    int result = gqueue_enqueue(write_queue, sd);
+    int result = nonblockingWriteBB(write_buffer, sd);
+    // gqueue_enqueue(write_queue, sd);
     // If unsuccessful dont return voucher and return 0
     if(result == 0) {
         return 0;
@@ -60,12 +70,14 @@ int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
 }
 
 void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
-    gqueue_enqueue(read_queue, sd);
+    blockingWriteBB(read_buffer, sd);
+    // gqueue_enqueue(read_queue, sd);
     (*v)->pid = sector_descriptor_get_pid(sd);
 }
 
 int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
-    int result = gqueue_enqueue(read_queue, sd);
+    int result = nonblockingWriteBB(read_buffer, sd);
+    // gqueue_enqueue(read_queue, sd);
 
     if(result == 0){
         return 0;
