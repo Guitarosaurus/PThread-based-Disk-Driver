@@ -10,8 +10,8 @@
 #include <pthread.h>
 #include <stdio.h>
 
-BoundedBuffer *write_buffer, *read_buffer, *write_results_buffer, *read_results_buffer;
-GQueue *write_queue, *read_queue;
+BoundedBuffer *write_buffer, *read_buffer;
+GQueue *write_results_queue, *read_results_queue;
 DiskDevice *dd;
 FreeSectorDescriptorStore *fsds_pointer;
 
@@ -21,41 +21,42 @@ typedef struct voucher {
     SectorDescriptor *result;
 } Voucher;
 
-typedef struct request {
-    Voucher *v;
-    SectorDescriptor *sd;
-} Request;
+void * read_thread_method(void* args){
+    args;
+    while(1){
+        printf("Waiting for an item to enter the buffer");
+        // Load up voucher which contains sd - blocking read
+        void * item = blockingReadBB(read_buffer);
+        // Read/write to disk
+        int success = read_sector(dd, item);
+        printf("success %i", success);
+        // Read - return result indication to app
+        unsigned long pid = sector_descriptor_get_pid(item);
+        gqueue_enqueue(read_results_queue, (pid, item));
+        printf("%lu", pid);
+    }
+    return NULL;
+}
 
-// void * read_thread_method(void* args){
-//     while(1){
-//         printf("Waiting for an item to enter the buffer");
-//         // Load up voucher which contains sd - blocking read
-//         void * item = blockingReadBB(read_buffer);
-//         // Read/write to disk
-//         int success = read_sector(dd, item);
-//         printf("success %i", success);
-//         // Read - return result indication to app
-//         unsigned long pid = sector_descriptor_get_pid(item);
-//         blockingWriteBB(read_results_buffer, item);
-//     }
-//     return NULL;
-// }
+void * write_thread_method(void* args){
+    args;
+    while(1){
+        printf("Waiting for an item to enter the buffer");
+        void * item = blockingReadBB(write_buffer);
+        int success = write_sector(dd, item);
+        unsigned long pid = sector_descriptor_get_pid(item);
+        // Free sector descriptor and return to store, set pointer to NULL
+        init_sector_descriptor(item);
+        blocking_put_sd(fsds_pointer, item);
+        item = NULL;
 
-// void * write_thread_method(void* args){
-//     while(1){
-//         printf("Waiting for an item to enter the buffer");
-//         void * item = blockingReadBB(write_buffer);
-//         void * success = (void *)write_sector(dd, item);
-//         unsigned long pid = sector_descriptor_get_pid(item);
-//         // Free sector descriptor and return to store, set pointer to NULL
-//         init_sector_descriptor(item);
-//         blocking_put_sd(fsds_pointer, item);
-//         item = NULL;
-//         // Return success to buffer to be accessed by app
-//         blockingWriteBB(write_results_buffer, (pid, success));
-//     }
-//     return NULL;
-// }
+        void * tuple = (void *)(pid, success);
+        // Return success to buffer to be accessed by app
+        gqueue_enqueue(write_results_queue, tuple);
+        printf("%lu", pid);
+    }
+    return NULL;
+}
 
 void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length, FreeSectorDescriptorStore **fsds){
     // First initalise fsds
@@ -67,8 +68,8 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     // Initialise two bounded buffer queues - no. of items can change
     write_buffer = createBB(16);
     read_buffer = createBB(16);
-    write_results_buffer = createBB(16);
-    read_results_buffer = createBB(16);
+    write_results_queue = create_gqueue();
+    read_results_queue = create_gqueue();
 
     //dd = construct_disk_device();
     dd = dd;
@@ -94,13 +95,7 @@ void blocking_write_sector(SectorDescriptor *sd, Voucher **v){
     (*v)->type = "W";
     (*v)->pid = sector_descriptor_get_pid(sd);
 
-    Request *r;
-
-    r->sd = sd;
-    r->v = v;
-
-    blockingWriteBB(write_buffer, r);
-    return NULL;
+    blockingWriteBB(write_buffer, sd);
 }
 
 /**
@@ -111,13 +106,7 @@ int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
     (*v)->type = "W";
     (*v)->pid = sector_descriptor_get_pid(sd);
 
-    Request *r;
-
-    r->sd = sd;
-    r->v = v;
-
-    int result = nonblockingWriteBB(write_buffer, r);
-    // gqueue_enqueue(write_queue, sd);
+    int result = nonblockingWriteBB(write_buffer, sd);
     // If unsuccessful dont return voucher and return 0
     if(result == 0) {
         v = NULL;
@@ -160,9 +149,9 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
 int redeem_voucher(Voucher *v, SectorDescriptor **sd){    
 
     //int pid = v->pid;
-    char type = v->type;
+    char *type = v->type;
 
-    if(type == "W"){
+    if(type == 'W'){
         return 0;
     } else {
         return 1;
