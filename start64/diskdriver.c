@@ -20,6 +20,7 @@ typedef struct voucher {
     char *type;
     Pid pid;
     SectorDescriptor *result;
+    int success;
 } Voucher;
 
 // Trying approach where i group them and queue this instead for my read/write methods
@@ -32,52 +33,39 @@ typedef struct appRequest
 
 void * read_thread_method(void* args){
     args;
-    
-    // Load request
-    AppRequest * req = blockingReadBB(read_buffer);
-    int success = read_sector(dd, (req)->sd);
-    // Return indication of success
-    req->v->result = req->sd;
-    printf("Request completed, success: %i, result returned to voucher \n", success);
-    return NULL;
+    printf("I have entered the read thread \n");
+    while(1){
+        // Load request - currently never runs as the queue is empty
+        AppRequest * req = blockingReadBB(read_buffer);
+        int success = read_sector(dd, (req)->sd);
+        // Return indication of success
+        req->v->result = req->sd;
+        req->v->success = success;
+        printf("Request completed, success: %i, result returned to voucher \n", success);
+    }
+    pthread_exit(NULL);
 }
 
-// void * read_thread_method(void* args){
-//     args;
-//     while(1){
-//         printf("Waiting for an item to enter the buffer");
-//         // Load up voucher which contains sd - blocking read
-//         void * item = blockingReadBB(read_buffer);
-//         // Read/write to disk
-//         int success = read_sector(dd, item);
-//         printf("success %i", success);
-//         // Read - return result indication to app
-//         unsigned long pid = sector_descriptor_get_pid(item);
-//         gqueue_enqueue(read_results_queue, (pid, item));
-//         printf("%lu", pid);
-//     }
-//     return NULL;
-// }
+void * write_thread_method(void* args){
+    args;
+    printf("I have entered the write thread method \n");
+    while(1){
+        printf("Waiting for an item to enter the buffer\n");
+        void * item = blockingReadBB(write_buffer);
+        int success = write_sector(dd, item);
+        unsigned long pid = sector_descriptor_get_pid(item);
+        // Free sector descriptor and return to store, set pointer to NULL
+        init_sector_descriptor(item);
+        blocking_put_sd(fsds_pointer, item);
+        item = NULL;
 
-// void * write_thread_method(void* args){
-//     args;
-//     while(1){
-//         printf("Waiting for an item to enter the buffer");
-//         void * item = blockingReadBB(write_buffer);
-//         int success = write_sector(dd, item);
-//         unsigned long pid = sector_descriptor_get_pid(item);
-//         // Free sector descriptor and return to store, set pointer to NULL
-//         init_sector_descriptor(item);
-//         blocking_put_sd(fsds_pointer, item);
-//         item = NULL;
-
-//         void * tuple = (void *)(pid, success);
-//         // Return success to buffer to be accessed by app
-//         gqueue_enqueue(write_results_queue, tuple);
-//         printf("%lu", pid);
-//     }
-//     return NULL;
-// }
+        void * tuple = (void *)(pid, success);
+        // Return success to buffer to be accessed by app
+        gqueue_enqueue(write_results_queue, tuple);
+        printf("%lu \n", pid);
+    }
+    pthread_exit(NULL);
+}
 
 void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length, FreeSectorDescriptorStore **fsds){
     // First initalise fsds
@@ -97,14 +85,14 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     //dd = construct_disk_device();
     dd = dd;
 
-    printf("About to initisalise thread");
-    pthread_t read_thread;
-    pthread_create(&read_thread, NULL, read_thread_method(NULL), NULL);
-    // printf("intialised thread");
-    // pthread_create(&write_thread, NULL, write_thread_method(NULL), NULL);
-
-    // pthread_join(write_thread, NULL);
-    pthread_join(read_thread, NULL);
+    printf("About to initisalise thread \n");
+    pthread_t read_thread, write_thread;
+    if(pthread_create(&read_thread, NULL, (void *) &read_thread_method, NULL) != 0){
+        printf("Error read thread could not be initalised \n");
+    }
+    if(pthread_create(&write_thread, NULL, (void *) &write_thread_method, NULL) != 0){
+        printf("Error writer thread could not be initiated \n");
+    };
 }
 
 /**
@@ -188,11 +176,12 @@ int redeem_voucher(Voucher *v, SectorDescriptor **sd){
 
     //int pid = v->pid;
     char *type = v->type;
-
+    printf("Voucher being attempted to be redeemed \n");
     if(type == 'W'){
-        return 0;
+        return v->success;
     } else {
-        return 1;
+        sd = &v->result;
+        return v->success;
     }
 
     printf("%li", sector_descriptor_get_pid(*sd));
