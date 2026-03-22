@@ -21,7 +21,7 @@ BoundedBuffer *voucher_mem, *appRequest_mem;
 typedef struct voucher {
     char *type;
     SectorDescriptor *sd;
-    int *success;
+    int success;
 } Voucher;
 
 // Static remains outside of functions
@@ -91,7 +91,7 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     }
 
     //dd = construct_disk_device();
-    DiskDevice = dd;
+    diskDevice = dd;
 
     printf("About to initisalise thread \n");
     pthread_t read_thread, write_thread;
