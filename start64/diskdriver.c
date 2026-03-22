@@ -9,6 +9,7 @@
 #include "generic_queue.h"
 #include <pthread.h>
 #include <stdio.h>
+#include <string.h>
 
 BoundedBuffer *write_buffer, *read_buffer;
 GQueue *write_results_queue, *read_results_queue;
@@ -47,18 +48,15 @@ void * write_thread_method(void* args){
     printf("I have entered the write thread method \n");
     while(1){
         printf("Waiting for an item to enter the buffer\n");
-        void * item = blockingReadBB(write_buffer);
-        int success = write_sector(diskDevice, item);
-        unsigned long pid = sector_descriptor_get_pid(item);
+        Voucher * req = blockingReadBB(write_buffer);
+        int success = write_sector(diskDevice, req->sd);
         // Free sector descriptor and return to store, set pointer to NULL
-        init_sector_descriptor(item);
-        blocking_put_sd(fsds_pointer, item);
-        item = NULL;
 
-        void * tuple = (void *)(pid, success);
-        // Return success to buffer to be accessed by app
-        gqueue_enqueue(write_results_queue, tuple);
-        printf("%lu \n", pid);
+        printf("%lu \n", sector_descriptor_get_pid(req->sd));
+        init_sector_descriptor(req->sd);
+        blocking_put_sd(fsds_pointer, req->sd);
+        req->sd = NULL;
+        req->success = success;        
     }
     pthread_exit(NULL);
 }
@@ -80,7 +78,7 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
 
     for(int i = 0; i < 20; i++){
         vouchers[i].sd = NULL;
-        vouchers[i].success = NULL;
+        vouchers[i].success = 0;
         vouchers[i].type = NULL;
 
         printf("I am attempting to write a vouchr to BB \n");
@@ -118,7 +116,7 @@ void blocking_write_sector(SectorDescriptor *sd, Voucher **v){
     // Believe this way of creating them is causing a seg fault
     voucher->type = "W";
     voucher->sd = sd;
-    voucher->success = NULL;
+    voucher->success = 0;
 
     *v = voucher;
     
@@ -137,7 +135,7 @@ int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
     // Believe this way of creating them is causing a seg fault
     voucher->type = "W";
     voucher->sd = sd;
-    voucher->success = NULL;
+    voucher->success = 0;
 
     *v = voucher;
     int result = nonblockingWriteBB(write_buffer, voucher);
@@ -158,7 +156,7 @@ void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
     // Believe this way of creating them is causing a seg fault
     voucher->type = "R";
     voucher->sd = sd;
-    voucher->success = NULL;
+    voucher->success = 0;
 
     *v = voucher;
     
@@ -171,7 +169,7 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
     // Believe this way of creating them is causing a seg fault
     voucher->type = "R";
     voucher->sd = sd;
-    voucher->success = NULL;
+    voucher->success = 0;
 
     *v = voucher;
     int result = nonblockingWriteBB(read_buffer, voucher);
@@ -194,15 +192,16 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
  */
 int redeem_voucher(Voucher *v, SectorDescriptor **sd){    
 
-    //int pid = v->pid;
     char *type = v->type;
     printf("Voucher being attempted to be redeemed \n");
-    if(type == 'W'){
+    if(strcmp(type, "W") == 0){
+        printf("Write voucher compared\n");
         return v->success;
     } else {
-        sd = &v->sd;
+        *sd = v->sd;
+        printf("Read voucher compared\n");
         return v->success;
     }
 
-    printf("%li", sector_descriptor_get_pid(*sd));
+    printf("%li ", sector_descriptor_get_pid(*sd));
 }
