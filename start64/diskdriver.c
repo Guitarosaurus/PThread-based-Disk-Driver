@@ -40,25 +40,27 @@ void * read_thread_method(void* args){
         req->success = success;
         printf("Request completed, success: %i, result returned to voucher \n", success);
     }
-    pthread_exit(NULL);
+    printf("I escaped the while loop \n");
+    return NULL;
 }
 
 void * write_thread_method(void* args){
     args;
     printf("I have entered the write thread method \n");
     while(1){
-        printf("Waiting for an item to enter the buffer\n");
+        printf("Waiting for an item to enter the write buffer\n");
         Voucher * req = blockingReadBB(write_buffer);
         int success = write_sector(diskDevice, req->sd);
         // Free sector descriptor and return to store, set pointer to NULL
-
         printf("%lu \n", sector_descriptor_get_pid(req->sd));
         init_sector_descriptor(req->sd);
         blocking_put_sd(fsds_pointer, req->sd);
         req->sd = NULL;
         req->success = success;        
+        printf("Written to disk \n");
     }
-    pthread_exit(NULL);
+    printf("I escaped the while loop \n");
+    return NULL;
 }
 
 void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length, FreeSectorDescriptorStore **fsds){
@@ -81,17 +83,13 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
         vouchers[i].success = 0;
         vouchers[i].type = NULL;
 
-        printf("I am attempting to write a vouchr to BB \n");
-
         blockingWriteBB(voucher_mem, &vouchers[i]);
-
-        printf("Written voucher to BB \n");
     }
 
     //dd = construct_disk_device();
     diskDevice = dd;
 
-    printf("About to initisalise thread \n");
+    printf("About to initisalise threads \n");
     pthread_t read_thread, write_thread;
     if(pthread_create(&read_thread, NULL, (void *) &read_thread_method, NULL) != 0){
         printf("Error read thread could not be initalised \n");
