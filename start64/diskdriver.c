@@ -193,6 +193,8 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
  */
 int redeem_voucher(Voucher *v, SectorDescriptor **sd){    
 
+    pthread_mutex_lock(&v->lock);
+
     while(v->complete != 1){
         pthread_cond_wait(&v->finished, &v->lock);
     }
@@ -206,6 +208,8 @@ int redeem_voucher(Voucher *v, SectorDescriptor **sd){
         *sd = v->sd;
         printf("Read voucher compared\n");
     }
+
+    pthread_mutex_unlock(&v->lock);
 
     blockingWriteBB(voucher_mem, v);
 
