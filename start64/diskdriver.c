@@ -125,7 +125,7 @@ void blocking_write_sector(SectorDescriptor *sd, Voucher **v){
     
     printf("Voucher created \n");
 
-    blockingWriteBB(write_buffer, v);
+    blockingWriteBB(write_buffer, voucher);
     printf("Blocking write complete for process id: %lu \n", sector_descriptor_get_pid(sd));
 }
 
@@ -141,7 +141,7 @@ int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
     voucher->success = NULL;
 
     *v = voucher;
-    int result = nonblockingWriteBB(write_buffer, v);
+    int result = nonblockingWriteBB(write_buffer, voucher);
     printf("Complete non-blocking write sector \n");
     // If unsuccessful dont return voucher and return 0
     if(result == 0) {
@@ -163,7 +163,7 @@ void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
 
     *v = voucher;
     
-    blockingWriteBB(read_buffer, v);
+    blockingWriteBB(read_buffer, voucher);
     printf("Blocking read complete for process id: %lu \n", sector_descriptor_get_pid(sd));
 }
 
@@ -175,7 +175,7 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
     voucher->success = NULL;
 
     *v = voucher;
-    int result = nonblockingWriteBB(read_buffer, v);
+    int result = nonblockingWriteBB(read_buffer, voucher);
 
     if(result == 0){
         return 0;
