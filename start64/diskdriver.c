@@ -85,6 +85,7 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
         vouchers[i].sd = NULL;
         vouchers[i].success = 0;
         vouchers[i].type = NULL;
+        vouchers[i].complete = 0;
 
         blockingWriteBB(voucher_mem, &vouchers[i]);
     }
@@ -118,6 +119,7 @@ void blocking_write_sector(SectorDescriptor *sd, Voucher **v){
     voucher->type = "W";
     voucher->sd = sd;
     voucher->success = 0;
+    voucher->complete = 0;
 
     *v = voucher;
     
@@ -137,6 +139,7 @@ int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
     voucher->type = "W";
     voucher->sd = sd;
     voucher->success = 0;
+    voucher->complete = 0;
 
     *v = voucher;
     int result = nonblockingWriteBB(write_buffer, voucher);
@@ -158,6 +161,7 @@ void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
     voucher->type = "R";
     voucher->sd = sd;
     voucher->success = 0;
+    voucher->complete = 0;
 
     *v = voucher;
     
@@ -171,6 +175,7 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
     voucher->type = "R";
     voucher->sd = sd;
     voucher->success = 0;
+    voucher->complete = 0;
 
     *v = voucher;
     int result = nonblockingWriteBB(read_buffer, voucher);
