@@ -1,0 +1,250 @@
+==185066== Memcheck, a memory error detector
+==185066== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==185066== Using Valgrind-3.22.0-bd4db67b1d-20231031 and LibVEX; rerun with -h for copyright info
+==185066== Command: ./my_demo 30
+==185066== Parent PID: 2684
+==185066== 
+--185066-- 
+--185066-- Valgrind options:
+--185066--    --leak-check=full
+--185066--    --show-leak-kinds=all
+--185066--    --track-origins=yes
+--185066--    --verbose
+--185066--    --log-file=valgrind-out.txt
+--185066-- Contents of /proc/version:
+--185066--   Linux version 6.14.0-37-generic (buildd@lcy02-amd64-031) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #37~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 20 10:25:38 UTC 2
+--185066-- 
+--185066-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--185066-- Page sizes: currently 4096, max supported 4096
+--185066-- Valgrind library directory: /usr/libexec/valgrind
+--185066-- Reading syms from /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo
+--185066-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+--185066--   Considering /usr/lib/debug/.build-id/da/07864eb4c1b06504b8688d25d7e84759fe708d.debug ..
+--185066--   .. build-id is valid
+--185066-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--185066--    object doesn't have a dynamic symbol table
+--185066-- Scheduler: using generic scheduler lock implementation.
+--185066-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==185066== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-185066-by-haniel-on-???
+==185066== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-185066-by-haniel-on-???
+==185066== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-185066-by-haniel-on-???
+==185066== 
+==185066== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==185066== don't want to do, unless you know exactly what you're doing,
+==185066== or are doing some strange experiment):
+==185066==   /usr/bin/vgdb --pid=185066 ...command...
+==185066== 
+==185066== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==185066==   /path/to/gdb ./my_demo
+==185066== and then give GDB the following command
+==185066==   target remote | /usr/bin/vgdb --pid=185066
+==185066== --pid is optional if only one valgrind process is running
+==185066== 
+--185066-- REDIR: 0x4028b00 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c2e1a (???)
+--185066-- REDIR: 0x40272b0 (ld-linux-x86-64.so.2:index) redirected to 0x580c2e34 (???)
+--185066-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--185066-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==185066== WARNING: new redirection conflicts with existing -- ignoring it
+--185066--     old: 0x04028b00 (strlen              ) R-> (0000.0) 0x580c2e1a ???
+--185066--     new: 0x04028b00 (strlen              ) R-> (2007.0) 0x0484f340 strlen
+--185066-- REDIR: 0x40274e0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4850460 (strcmp)
+--185066-- REDIR: 0x4026910 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4853cd0 (mempcpy)
+--185066-- Reading syms from /usr/lib/x86_64-linux-gnu/libc.so.6
+--185066--   Considering /usr/lib/debug/.build-id/8e/9fd827446c24067541ac5390e6f527fb5947bb.debug ..
+--185066--   .. build-id is valid
+--185066-- REDIR: 0x4028ca0 (ld-linux-x86-64.so.2:strncmp) redirected to 0x484fc90 (strncmp)
+--185066-- REDIR: 0x4923070 (libc.so.6:strnlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4923100 (libc.so.6:strpbrk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49211c0 (libc.so.6:strcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x493a3b0 (libc.so.6:wcsnlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49202b0 (libc.so.6:memset) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4939b20 (libc.so.6:wcslen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49a53f0 (libc.so.6:__memcpy_chk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4920220 (libc.so.6:memrchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x493a350 (libc.so.6:wcsncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x491f740 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49388e0 (libc.so.6:wcschr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49210b0 (libc.so.6:index) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4923130 (libc.so.6:rindex) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4938990 (libc.so.6:wcscmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49204d0 (libc.so.6:stpncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4946eb0 (libc.so.6:wmemchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4922f10 (libc.so.6:strncmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4920530 (libc.so.6:strcasecmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4922330 (libc.so.6:strcspn) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49398f0 (libc.so.6:wcscpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4921040 (libc.so.6:strcat) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4922e10 (libc.so.6:strncasecmp_l) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4921130 (libc.so.6:strchrnul) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x491f650 (libc.so.6:bcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49222c0 (libc.so.6:strcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49205d0 (libc.so.6:strcasecmp_l) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4922ce0 (libc.so.6:strlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4922fb0 (libc.so.6:strncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4946f30 (libc.so.6:wmemcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49a5510 (libc.so.6:__memmove_chk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==185066== WARNING: new redirection conflicts with existing -- ignoring it
+--185066--     old: 0x049f6a50 (__memcpy_chk_avx_una) R-> (2030.0) 0x04853dd0 __memcpy_chk
+--185066--     new: 0x049f6a50 (__memcpy_chk_avx_una) R-> (2024.0) 0x04853740 __memmove_chk
+--185066-- REDIR: 0x4920460 (libc.so.6:stpcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x491ffe0 (libc.so.6:memmove) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==185066== Preferring higher priority redirection:
+--185066--     old: 0x049f6a80 (__memcpy_avx_unalign) R-> (2018.0) 0x04851580 __memcpy_avx_unaligned_erms
+--185066--     new: 0x049f6a80 (__memcpy_avx_unalign) R-> (2018.1) 0x04852d60 memmove
+--185066-- REDIR: 0x491f5d0 (libc.so.6:memchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4923300 (libc.so.6:strspn) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4920100 (libc.so.6:mempcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x4922d70 (libc.so.6:strncasecmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--185066-- REDIR: 0x49fb670 (libc.so.6:__strrchr_avx2) redirected to 0x484ed20 (rindex)
+--185066-- REDIR: 0x491b670 (libc.so.6:malloc) redirected to 0x48467b0 (malloc)
+--185066-- REDIR: 0x49f8e20 (libc.so.6:__strchrnul_avx2) redirected to 0x48537b0 (strchrnul)
+--185066-- REDIR: 0x49f6a80 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4852d60 (memmove)
+--185066-- REDIR: 0x49f97c0 (libc.so.6:__strlen_avx2) redirected to 0x484f220 (strlen)
+--185066-- REDIR: 0x49f6a40 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x48538d0 (mempcpy)
+--185066-- REDIR: 0x491c7c0 (libc.so.6:calloc) redirected to 0x484d8a0 (calloc)
+--185066-- REDIR: 0x491bd50 (libc.so.6:free) redirected to 0x4849820 (free)
+--185066-- REDIR: 0x49f9010 (libc.so.6:__strcmp_avx2) redirected to 0x4850360 (strcmp)
+==185066== 
+==185066== HEAP SUMMARY:
+==185066==     in use at exit: 10,528 bytes in 66 blocks
+==185066==   total heap usage: 258 allocs, 192 frees, 14,608 bytes allocated
+==185066== 
+==185066== Searching for pointers to 66 not-freed blocks
+==185066== Checked 201,391,312 bytes
+==185066== 
+==185066== 24 bytes in 1 blocks are still reachable in loss record 1 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x401938: create_gqueue (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x4016C2: create_fsds (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A01: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 104 bytes in 1 blocks are still reachable in loss record 2 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x4016B9: create_fsds (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A01: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 3 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40126A: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A3A: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 4 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40127F: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A3A: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 5 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40126A: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A4B: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 6 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40127F: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A4B: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 7 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40126A: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A5C: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 8 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40127F: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A5C: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 9 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40126A: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A6D: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 160 bytes in 1 blocks are still reachable in loss record 10 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40127F: createBB (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x402A6D: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 192 bytes in 1 blocks are still reachable in loss record 11 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x402809: construct_disk_device (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D62: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 224 bytes in 14 blocks are still reachable in loss record 12 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x4019CB: gqueue_enqueue (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x40188C: put_sd (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x4018FA: blocking_put_sd (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x40299A: write_thread_method (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x490AAA3: start_thread (pthread_create.c:447)
+==185066==    by 0x4997A63: clone (clone.S:100)
+==185066== 
+==185066== 256 bytes in 16 blocks are still reachable in loss record 13 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x4019CB: gqueue_enqueue (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x40188C: put_sd (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x4018FA: blocking_put_sd (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x4022FB: reader_fn (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x490AAA3: start_thread (pthread_create.c:447)
+==185066==    by 0x4997A63: clone (clone.S:100)
+==185066== 
+==185066== 272 bytes in 1 blocks are possibly lost in loss record 14 of 18
+==185066==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40145AB: calloc (rtld-malloc.h:44)
+==185066==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
+==185066==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
+==185066==    by 0x490B616: allocate_stack (allocatestack.c:429)
+==185066==    by 0x490B616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
+==185066==    by 0x402BE2: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 272 bytes in 1 blocks are possibly lost in loss record 15 of 18
+==185066==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40145AB: calloc (rtld-malloc.h:44)
+==185066==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
+==185066==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
+==185066==    by 0x490B616: allocate_stack (allocatestack.c:429)
+==185066==    by 0x490B616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
+==185066==    by 0x402C12: init_disk_driver (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401D92: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 1,920 bytes in 1 blocks are still reachable in loss record 16 of 18
+==185066==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x401D15: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 2,992 bytes in 11 blocks are possibly lost in loss record 17 of 18
+==185066==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40145AB: calloc (rtld-malloc.h:44)
+==185066==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
+==185066==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
+==185066==    by 0x490B616: allocate_stack (allocatestack.c:429)
+==185066==    by 0x490B616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
+==185066==    by 0x402373: construct_fake_applications (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401DB2: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== 2,992 bytes in 11 blocks are possibly lost in loss record 18 of 18
+==185066==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==185066==    by 0x40145AB: calloc (rtld-malloc.h:44)
+==185066==    by 0x40145AB: allocate_dtv (dl-tls.c:370)
+==185066==    by 0x40145AB: _dl_allocate_tls (dl-tls.c:629)
+==185066==    by 0x490B616: allocate_stack (allocatestack.c:429)
+==185066==    by 0x490B616: pthread_create@@GLIBC_2.34 (pthread_create.c:655)
+==185066==    by 0x4023AB: construct_fake_applications (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066==    by 0x401DB2: main (in /home/haniel/Documents/Operating Systems/PThread-based-Disk-Driver/start64/my_demo)
+==185066== 
+==185066== LEAK SUMMARY:
+==185066==    definitely lost: 0 bytes in 0 blocks
+==185066==    indirectly lost: 0 bytes in 0 blocks
+==185066==      possibly lost: 6,528 bytes in 24 blocks
+==185066==    still reachable: 4,000 bytes in 42 blocks
+==185066==         suppressed: 0 bytes in 0 blocks
+==185066== 
+==185066== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
