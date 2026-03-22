@@ -32,27 +32,20 @@ static Voucher vouchers[20];
 
 void * read_thread_method(void* args){
     (void)args;
-    printf("I have entered the read thread \n");
     while(1){
-        printf("Waiting for items to be added to readBuffer \n");
         Voucher * req = blockingReadBB(read_buffer);
-        printf("Acquired the latest voucher \n");
         int success = read_sector(diskDevice, req->sd);
         // Return indication of success
         req->success = success;
         req->complete = 1;
         pthread_cond_signal(&req->finished);
-        printf("Request completed, success: %i, result returned to voucher \n", success);
     }
-    printf("I escaped the while loop \n");
     return NULL;
 }
 
 void * write_thread_method(void* args){
     (void)args;
-    printf("I have entered the write thread method \n");
     while(1){
-        printf("Waiting for an item to enter the write buffer\n");
         Voucher * req = blockingReadBB(write_buffer);
         int success = write_sector(diskDevice, req->sd);
         // Free sector descriptor and return to store, set pointer to NULL
@@ -62,15 +55,12 @@ void * write_thread_method(void* args){
         req->success = success;        
         req->complete = 1;
         pthread_cond_signal(&req->finished);
-        printf("Written to disk \n");
     }
-    printf("I escaped the while loop \n");
     return NULL;
 }
 
 void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length, FreeSectorDescriptorStore **fsds){
     // First initalise fsds
-    printf("I have entered the disk_driver_initalisation \n");
     fsds_pointer = create_fsds();
     *fsds = fsds_pointer;
     // Then populate with sector descriptors
@@ -86,14 +76,14 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
         vouchers[i].success = 0;
         vouchers[i].type = NULL;
         vouchers[i].complete = 0;
+        pthread_mutex_init(&vouchers[i].lock, NULL);
+        pthread_cond_init(&vouchers[i].finished, NULL);
 
         blockingWriteBB(voucher_mem, &vouchers[i]);
     }
 
-    //dd = construct_disk_device();
     diskDevice = dd;
 
-    printf("About to initisalise threads \n");
     pthread_t read_thread, write_thread;
     if(pthread_create(&read_thread, NULL, (void *) &read_thread_method, NULL) != 0){
         printf("Error read thread could not be initalised \n");
@@ -101,10 +91,6 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     if(pthread_create(&write_thread, NULL, (void *) &write_thread_method, NULL) != 0){
         printf("Error writer thread could not be initiated \n");
     };
-
-    // Detach threads so they return resources when finished?
-    pthread_detach(read_thread);
-    pthread_detach(write_thread);
 }
 
 /**
@@ -113,37 +99,37 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
  * Add sd to queue and return voucher that has pid of process
 */
 void blocking_write_sector(SectorDescriptor *sd, Voucher **v){ 
-    printf("Entered blocking-write-sector \n");
     Voucher *voucher = blockingReadBB(voucher_mem);
-    // Believe this way of creating them is causing a seg fault
     voucher->type = "W";
     voucher->sd = sd;
     voucher->success = 0;
     voucher->complete = 0;
+    pthread_mutex_init(&voucher->lock, NULL);
+    pthread_cond_init(&voucher->finished, NULL);
 
     *v = voucher;
-    
-    printf("Voucher created \n");
 
     blockingWriteBB(write_buffer, voucher);
-    printf("Blocking write complete for process id: %lu \n", sector_descriptor_get_pid(sd));
 }
 
 /**
  * Return instant, 0 if buffer full
  */
 int nonblocking_write_sector(SectorDescriptor *sd, Voucher **v){
-    printf("Entered non-blocking-write-sector \n");
-    Voucher *voucher = blockingReadBB(voucher_mem);
+    Voucher *voucher;
+    if(!nonblockingReadBB(voucher_mem, (void **) &voucher)){
+        return 0;
+    };
     // Believe this way of creating them is causing a seg fault
     voucher->type = "W";
     voucher->sd = sd;
     voucher->success = 0;
     voucher->complete = 0;
+    pthread_mutex_init(&voucher->lock, NULL);
+    pthread_cond_init(&voucher->finished, NULL);
 
     *v = voucher;
     int result = nonblockingWriteBB(write_buffer, voucher);
-    printf("Complete non-blocking write sector \n");
     // If unsuccessful dont return voucher and return 0
     if(result == 0) {
         v = NULL;
@@ -162,20 +148,26 @@ void blocking_read_sector(SectorDescriptor *sd, Voucher**v){
     voucher->sd = sd;
     voucher->success = 0;
     voucher->complete = 0;
+    pthread_mutex_init(&voucher->lock, NULL);
+    pthread_cond_init(&voucher->finished, NULL);
 
     *v = voucher;
     
     blockingWriteBB(read_buffer, voucher);
-    printf("Blocking read complete for process id: %lu \n", sector_descriptor_get_pid(sd));
 }
 
 int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
-    Voucher *voucher = blockingReadBB(voucher_mem);
+    Voucher *voucher;
+    if(!nonblockingReadBB(voucher_mem, (void **) &voucher)){
+        return 0;
+    };
     // Believe this way of creating them is causing a seg fault
     voucher->type = "R";
     voucher->sd = sd;
     voucher->success = 0;
     voucher->complete = 0;
+    pthread_mutex_init(&voucher->lock, NULL);
+    pthread_cond_init(&voucher->finished, NULL);
 
     *v = voucher;
     int result = nonblockingWriteBB(read_buffer, voucher);
@@ -205,13 +197,9 @@ int redeem_voucher(Voucher *v, SectorDescriptor **sd){
     }
 
     char *type = v->type;
-    printf("Voucher being attempted to be redeemed \n");
     int result = v->success;
-    if(strcmp(type, "W") == 0){
-        printf("Write voucher compared\n");
-    } else {
+    if(strcmp(type, "R") == 0){
         *sd = v->sd;
-        printf("Read voucher compared\n");
     }
 
     pthread_mutex_unlock(&v->lock);
@@ -219,6 +207,4 @@ int redeem_voucher(Voucher *v, SectorDescriptor **sd){
     blockingWriteBB(voucher_mem, v);
 
     return result;
-
-    printf("%li ", sector_descriptor_get_pid(*sd));
 }
