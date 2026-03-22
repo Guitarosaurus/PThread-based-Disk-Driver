@@ -1,0 +1,1680 @@
+Info: Simulation will run for 30 seconds
+Info: Allocated memory for sector descriptor contents
+Info: Constructing disk device...
+Info: Constructed disk device.
+Info: Initialising disk driver...
+I have entered the disk_driver_initalisation 
+Info: built 30 descriptors (of length 64) from 1920 bytes of memory
+About to initisalise threads 
+I have entered the read thread 
+Waiting for items to be added to readBuffer 
+Info: Initialised disk driver.
+Info: Constructing fake applications...
+I have entered the write thread method 
+Waiting for an item to enter the write buffer
+Info: writer for application 0 is running.
+Info: writer for application 1 is running.
+Info: reader for application 1 is running.
+Info: writer for application 2 is running.
+Info: reader for application 0 is running.
+Info: reader for application 2 is running.
+Info: writer for application 3 is running.
+Info: reader for application 3 is running.
+Info: writer for application 4 is running.
+Info: reader for application 4 is running.
+Info: writer for application 5 is running.
+Info: reader for application 5 is running.
+Info: writer for application 6 is running.
+Info: reader for application 6 is running.
+Info: writer for application 7 is running.
+Info: reader for application 7 is running.
+Info: writer for application 8 is running.
+Info: reader for application 8 is running.
+Info: writer for application 9 is running.
+Info: reader for application 9 is running.
+Info: writer for application 10 is running.
+Info: Constructed fake applications.
+Info: reader for application 10 is running.
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing write to sector 2059
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 0 
+Info: application 0 has queued write to sector 2059 (blocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 1035 
+Blocking read complete for process id: 2 
+Info: application 2 has queued read of sector 1035 (blocking)
+Acquired the latest voucher 
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing write to sector 1861
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 4 
+Info: application 4 has queued write to sector 1861 (blocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 1107
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 5 
+Info: application 5 has queued write to sector 1107 (blocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing write to sector 1379
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 9 has queued write to sector 1379 (nonblocking)
+[Device> sector 1035 successfully read by process 2
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+[Device> sector 2059 successfully written by process 0
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1861 successfully written by process 4
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> attempt to write sector 1107 by process 5 failed
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Info: application 4 has acquired a sector descriptor.
+Write voucher compared
+Info: application 4 is queueing read of sector 392 
+Info: application 4 (writer) write to sector 1861 was successful
+Info: application 4 has queued read of sector 392 (nonblocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 3988 
+Info: application 5 has queued read of sector 3988 (nonblocking)
+Acquired the latest voucher 
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing write to sector 1807
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 8 
+Info: application 8 has queued write to sector 1807 (blocking)
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 852 
+Info: application 8 has queued read of sector 852 (nonblocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 3085
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 10 
+Info: application 10 has queued write to sector 3085 (blocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 3123 
+Blocking read complete for process id: 10 
+Info: application 10 has queued read of sector 3123 (blocking)
+[Device> attempt to write sector 1379 by process 9 failed
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 392 successfully read by process 4
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3988 successfully read by process 5
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1807 successfully written by process 8
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 852 successfully read by process 8
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3085 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 3123 successfully read by process 10
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing write to sector 1113
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 1 
+Info: application 1 has queued write to sector 1113 (blocking)
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 2444 
+Blocking read complete for process id: 1 
+Info: application 1 has queued read of sector 2444 (blocking)
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing read of sector 1842 
+Info: application 0 has queued read of sector 1842 (nonblocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing write to sector 1435
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 2 has queued write to sector 1435 (nonblocking)
+Acquired the latest voucher 
+Info: application 3 has acquired a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 3 is queueing write to sector 512
+Info: application 2 (reader) read from sector 1035 was successful
+Info: application 2 (reader) has released a sector descriptor.
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 3 
+Info: application 3 has queued write to sector 512 (blocking)
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing read of sector 125 
+Info: application 3 has queued read of sector 125 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 2511 
+Info: application 6 has queued read of sector 2511 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 3225
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 6 
+Info: application 6 has queued write to sector 3225 (blocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 1504
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 7 has queued write to sector 1504 (nonblocking)
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing write to sector 2274
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 4 
+Info: application 4 has queued write to sector 2274 (blocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 2655 
+Info: application 7 has queued read of sector 2655 (nonblocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing read of sector 1594 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 9 (writer) write to sector 1379 was unsuccessful
+Info: application 9 has queued read of sector 1594 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 8 (reader) read from sector 852 was successful
+Info: application 8 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 3085 was successful
+[Device> sector 1113 successfully written by process 1
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1435 successfully written by process 2
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2444 successfully read by process 1
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1842 successfully read by process 0
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 512 successfully written by process 3
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 0 (writer) write to sector 2059 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 2444 was successful
+Info: application 1 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 2 (writer) write to sector 1435 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 0 (reader) read from sector 1842 was successful
+Info: application 0 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 5 (writer) write to sector 1107 was unsuccessful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 4 (reader) read from sector 392 was successful
+Info: application 4 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 3988 was successful
+Info: application 5 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 2511 was unsuccessful
+Info: application 6 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 3123 was successful
+Info: application 10 (reader) has released a sector descriptor.
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 1932
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 10 
+Info: application 10 has queued write to sector 1932 (blocking)
+[Device> sector 125 successfully read by process 3
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3225 successfully written by process 6
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2511 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2655 successfully read by process 7
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1504 successfully written by process 7
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2274 successfully written by process 4
+Written to disk 
+Waiting for an item to enter the write buffer
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 1354 
+Blocking read complete for process id: 2 
+Info: application 2 has queued read of sector 1354 (blocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing write to sector 1361
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 2 
+Info: application 2 has queued write to sector 1361 (blocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 6 (writer) write to sector 3225 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 7 (reader) read from sector 2655 was successful
+Info: application 7 (reader) has released a sector descriptor.
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 303 
+Info: application 8 has queued read of sector 303 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 8 (writer) write to sector 1807 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 1932 was unsuccessful
+[Device> sector 1932 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1594 successfully read by process 9
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1361 successfully written by process 2
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1354 successfully read by process 2
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 1 (writer) write to sector 1113 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 3 (writer) write to sector 512 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 3 (reader) read from sector 125 was successful
+Info: application 3 (reader) has released a sector descriptor.
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 1420
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 5 has queued write to sector 1420 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 (writer) write to sector 1504 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 4 (writer) write to sector 2274 was successful
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 2690 
+Blocking read complete for process id: 6 
+Info: application 6 has queued read of sector 2690 (blocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 1592
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 6 
+Info: application 6 has queued write to sector 1592 (blocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing write to sector 3785
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 9 
+Info: application 9 has queued write to sector 3785 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 9 (reader) read from sector 1594 was successful
+Info: application 9 (reader) has released a sector descriptor.
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing write to sector 1616
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 8 has queued write to sector 1616 (nonblocking)
+[Device> sector 303 successfully read by process 8
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1420 successfully written by process 5
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1592 successfully written by process 6
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2690 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+[Device> sector 3785 successfully written by process 9
+Written to disk 
+Waiting for an item to enter the write buffer
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing write to sector 3518
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 0 
+Info: application 0 has queued write to sector 3518 (blocking)
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 3065 
+Blocking read complete for process id: 1 
+Info: application 1 has queued read of sector 3065 (blocking)
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing write to sector 3085
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 1 
+Info: application 1 has queued write to sector 3085 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Acquired the latest voucher 
+Info: application 2 (reader) read from sector 1354 was successful
+Info: application 2 (reader) has released a sector descriptor.
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing read of sector 935 
+Info: application 0 has queued read of sector 935 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 5 (writer) write to sector 1420 was successful
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing read of sector 3417 
+Info: application 4 has queued read of sector 3417 (nonblocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 2890 
+Blocking read complete for process id: 5 
+Info: application 5 has queued read of sector 2890 (blocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing read of sector 2050 
+Info: application 10 has acquired a sector descriptor.
+Voucher being attempted to be redeemed 
+Info: application 9 has queued read of sector 2050 (nonblocking)
+Read voucher compared
+Info: application 10 is queueing read of sector 1767 
+Info: application 6 (reader) read from sector 2690 was successful
+Info: application 6 (reader) has released a sector descriptor.
+Info: application 10 has queued read of sector 1767 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 8 (reader) read from sector 303 was successful
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 3475
+Entered non-blocking-write-sector 
+Info: application 8 (reader) has released a sector descriptor.
+Complete non-blocking write sector 
+Info: application 10 has queued write to sector 3475 (nonblocking)
+[Device> sector 3065 successfully read by process 1
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1616 successfully written by process 8
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 935 successfully read by process 0
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3417 successfully read by process 4
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3518 successfully written by process 0
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2890 successfully read by process 5
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3085 successfully written by process 1
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2050 successfully read by process 9
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 0 (writer) write to sector 3518 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 2 (writer) write to sector 1361 was successful
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing read of sector 945 
+Info: application 3 has queued read of sector 945 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 2890 was successful
+Info: application 5 (reader) has released a sector descriptor.
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 495 
+Blocking read complete for process id: 7 
+Info: application 7 has queued read of sector 495 (blocking)
+Voucher being attempted to be redeemed 
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 95
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 5 has queued write to sector 95 (nonblocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 2534
+Read voucher compared
+Entered blocking-write-sector 
+Info: application 4 (reader) read from sector 3417 was successful
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing write to sector 3078
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 4 has queued write to sector 3078 (nonblocking)
+Info: application 4 (reader) has released a sector descriptor.
+Voucher created 
+Blocking write complete for process id: 7 
+Info: application 7 has queued write to sector 2534 (blocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 6 (writer) write to sector 1592 was successful
+[Device> sector 1767 successfully read by process 10
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 1767 was successful
+Info: application 10 (reader) has released a sector descriptor.
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 1627 
+Info: application 8 has queued read of sector 1627 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 3475 was unsuccessful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 8 (writer) write to sector 1616 was successful
+[Device> sector 945 successfully read by process 3
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3475 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 95 successfully written by process 5
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 3078 successfully written by process 4
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 495 successfully read by process 7
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1627 successfully read by process 8
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 3065 was successful
+Info: application 1 (reader) has released a sector descriptor.
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing write to sector 2826
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 3 
+Info: application 3 has queued write to sector 2826 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 0 (reader) read from sector 935 was successful
+Info: application 0 (reader) has released a sector descriptor.
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 1009 
+Info: application 2 has queued read of sector 1009 (nonblocking)
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 9 (writer) write to sector 3785 was successful
+Info: application 7 (writer) write to sector 2534 was unsuccessful
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 1981
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 6 has queued write to sector 1981 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 2116 
+Info: application 6 has queued read of sector 2116 (nonblocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 3437 
+Blocking read complete for process id: 10 
+Info: application 10 has queued read of sector 3437 (blocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 2786
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 10 has queued write to sector 2786 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 8 (reader) read from sector 1627 was successful
+Info: application 8 (reader) has released a sector descriptor.
+[Device> attempt to write sector 2534 by process 7 failed
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> attempt to write sector 2826 by process 3 failed
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1981 successfully written by process 6
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1009 successfully read by process 2
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2116 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3437 successfully read by process 10
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+[Device> sector 2786 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 1 (writer) write to sector 3085 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 3 (writer) write to sector 2826 was unsuccessful
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing read of sector 631 
+Info: application 0 has queued read of sector 631 (nonblocking)
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Voucher being attempted to be redeemed 
+Info: application 4 has acquired a sector descriptor.
+Write voucher compared
+Read voucher compared
+Info: application 5 (writer) write to sector 95 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 4 (writer) write to sector 3078 was successful
+Info: application 7 (reader) read from sector 495 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 9 (reader) read from sector 2050 was successful
+Info: application 9 (reader) has released a sector descriptor.
+Info: application 7 (reader) has released a sector descriptor.
+Info: application 4 is queueing read of sector 3950 
+Info: application 4 has queued read of sector 3950 (nonblocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 1224
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 7 has queued write to sector 1224 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 6 (writer) write to sector 1981 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 2116 was successful
+Info: application 6 (reader) has released a sector descriptor.
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing write to sector 974
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 8 
+Info: application 8 has queued write to sector 974 (blocking)
+[Device> sector 631 successfully read by process 0
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1224 successfully written by process 7
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 3950 successfully read by process 4
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+[Device> sector 974 successfully written by process 8
+Written to disk 
+Waiting for an item to enter the write buffer
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing write to sector 3613
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 0 
+Info: application 0 has queued write to sector 3613 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 2 (reader) read from sector 1009 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 2 (reader) has released a sector descriptor.
+Info: application 3 (reader) read from sector 945 was successful
+Info: application 3 (reader) has released a sector descriptor.
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing write to sector 601
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 2 has queued write to sector 601 (nonblocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 1148 
+Blocking read complete for process id: 5 
+Info: application 5 has queued read of sector 1148 (blocking)
+Acquired the latest voucher 
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 1694 
+Info: application 6 has queued read of sector 1694 (nonblocking)
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 3540 
+Info: application 8 has queued read of sector 3540 (nonblocking)
+[Device> sector 3613 successfully written by process 0
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 601 successfully written by process 2
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1148 successfully read by process 5
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 1823 
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing write to sector 1982
+Entered blocking-write-sector 
+Voucher created 
+Blocking read complete for process id: 1 
+Blocking write complete for process id: 3 
+Info: application 1 has queued read of sector 1823 (blocking)
+Info: application 3 has queued write to sector 1982 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 0 (reader) read from sector 631 was successful
+Info: application 0 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 0 (writer) write to sector 3613 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 1148 was successful
+Info: application 5 (reader) has released a sector descriptor.
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing write to sector 3895
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 9 
+Info: application 9 has queued write to sector 3895 (blocking)
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing write to sector 93
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 4 has queued write to sector 93 (nonblocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 2787 
+Info: application 7 has queued read of sector 2787 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 4 (reader) read from sector 3950 was successful
+Info: application 4 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 (writer) write to sector 1224 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 3437 was successful
+Info: application 10 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 2786 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 1694 was unsuccessful
+Info: application 6 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 8 (writer) write to sector 974 was successful
+[Device> sector 1982 successfully written by process 3
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1694 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3540 successfully read by process 8
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3895 successfully written by process 9
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1823 successfully read by process 1
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2787 successfully read by process 7
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+[Device> attempt to write sector 93 by process 4 failed
+Written to disk 
+Waiting for an item to enter the write buffer
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing write to sector 2483
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 1 
+Info: application 1 has queued write to sector 2483 (blocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 140 
+Info: application 2 has queued read of sector 140 (nonblocking)
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing read of sector 2589 
+Blocking read complete for process id: 3 
+Info: application 3 has queued read of sector 2589 (blocking)
+Acquired the latest voucher 
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 3366
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 5 has queued write to sector 3366 (nonblocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 1196 
+Blocking read complete for process id: 5 
+Info: application 5 has queued read of sector 1196 (blocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing read of sector 2463 
+Info: application 9 has queued read of sector 2463 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 1150
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 6 
+Info: application 6 has queued write to sector 1150 (blocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 3063
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 10 
+Info: application 10 has queued write to sector 3063 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 8 (reader) read from sector 3540 was successful
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing write to sector 860
+Info: application 8 (reader) has released a sector descriptor.
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 8 has queued write to sector 860 (nonblocking)
+[Device> sector 2483 successfully written by process 1
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 3366 successfully written by process 5
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 140 successfully read by process 2
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2589 successfully read by process 3
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1150 successfully written by process 6
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 1823 was successful
+Info: application 1 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 3 (writer) write to sector 1982 was successful
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing read of sector 724 
+Blocking read complete for process id: 0 
+Info: application 0 has queued read of sector 724 (blocking)
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing write to sector 3296
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 0 
+Info: application 0 has queued write to sector 3296 (blocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 2 (writer) write to sector 601 was successful
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing read of sector 1083 
+Blocking read complete for process id: 4 
+Info: application 4 has queued read of sector 1083 (blocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 2701
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 7 has queued write to sector 2701 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 1196 was unsuccessful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 5 (reader) has released a sector descriptor.
+Info: application 4 (writer) write to sector 93 was unsuccessful
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 2686 
+Info: application 10 has queued read of sector 2686 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 1970 
+Blocking read complete for process id: 6 
+Info: application 6 has queued read of sector 1970 (blocking)
+[Device> sector 3063 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1196 successfully read by process 5
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 860 successfully written by process 8
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2463 successfully read by process 9
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3296 successfully written by process 0
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 1 (writer) write to sector 2483 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 0 (writer) write to sector 3296 was successful
+Info: application 2 has acquired a sector descriptor.
+Voucher being attempted to be redeemed 
+Info: application 2 is queueing write to sector 1052
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 2 has queued write to sector 1052 (nonblocking)
+Read voucher compared
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 2 (reader) read from sector 140 was successful
+Info: application 2 (reader) has released a sector descriptor.
+Info: application 3 (reader) read from sector 2589 was successful
+Info: application 3 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 9 (writer) write to sector 3895 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 7 (reader) read from sector 2787 was successful
+Info: application 7 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 (writer) write to sector 2701 was unsuccessful
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 536 
+Blocking read complete for process id: 5 
+Info: application 5 has queued read of sector 536 (blocking)
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing write to sector 506
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 4 
+Info: application 4 has queued write to sector 506 (blocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 8 (writer) write to sector 860 was successful
+[Device> sector 2701 successfully written by process 7
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1052 successfully written by process 2
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 724 successfully read by process 0
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 506 successfully written by process 4
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1083 successfully read by process 4
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2686 successfully read by process 10
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 428 
+Info: application 1 has queued read of sector 428 (nonblocking)
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing write to sector 239
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 3 has queued write to sector 239 (nonblocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 3187 
+Info: application 2 has queued read of sector 3187 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 5 (writer) write to sector 3366 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 9 (reader) read from sector 2463 was successful
+Info: application 9 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 628 
+Info: application 7 has queued read of sector 628 (nonblocking)
+Info: application 6 (writer) write to sector 1150 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 4 (reader) read from sector 1083 was successful
+Info: application 4 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 2686 was successful
+Info: application 10 (reader) has released a sector descriptor.
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 1740
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 7 has queued write to sector 1740 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 536 was unsuccessful
+Info: application 5 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 3063 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 1970 was unsuccessful
+Info: application 6 (reader) has released a sector descriptor.
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 51 
+Blocking read complete for process id: 8 
+Info: application 8 has queued read of sector 51 (blocking)
+[Device> sector 1970 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 239 successfully written by process 3
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 536 successfully read by process 5
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1740 successfully written by process 7
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 428 successfully read by process 1
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3187 successfully read by process 2
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing write to sector 3025
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 1 
+Info: application 1 has queued write to sector 3025 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 0 (reader) read from sector 724 was successful
+Info: application 0 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 428 was successful
+Info: application 1 (reader) has released a sector descriptor.
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing write to sector 3721
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 0 has queued write to sector 3721 (nonblocking)
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing read of sector 154 
+Blocking read complete for process id: 3 
+Info: application 3 has queued read of sector 154 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 7 (reader) read from sector 628 was unsuccessful
+Info: application 7 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 (writer) write to sector 1740 was successful
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 733
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 10 
+Info: application 10 has queued write to sector 733 (blocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 2475 
+Info: application 8 has acquired a sector descriptor.
+Blocking read complete for process id: 6 
+Info: application 8 is queueing write to sector 1592
+Info: application 6 has queued read of sector 2475 (blocking)
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 8 
+Info: application 8 has queued write to sector 1592 (blocking)
+[Device> sector 628 successfully read by process 7
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3025 successfully written by process 1
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 51 successfully read by process 8
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3721 successfully written by process 0
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 733 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 3 (writer) write to sector 239 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 2 (writer) write to sector 1052 was successful
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 2801
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 5 
+Info: application 5 has queued write to sector 2801 (blocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing write to sector 786
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 9 
+Info: application 9 has queued write to sector 786 (blocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 3187
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 6 has queued write to sector 3187 (nonblocking)
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing read of sector 2284 
+Info: application 4 has queued read of sector 2284 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 4 (writer) write to sector 506 was successful
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 1680 
+Info: application 7 has queued read of sector 1680 (nonblocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 2858 
+Info: application 5 has queued read of sector 2858 (nonblocking)
+[Device> sector 1592 successfully written by process 8
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 154 successfully read by process 3
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2801 successfully written by process 5
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 786 successfully written by process 9
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2475 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 1 (writer) write to sector 3025 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 2 (reader) read from sector 3187 was successful
+Info: application 2 (reader) has released a sector descriptor.
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing write to sector 3136
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 2 
+Info: application 2 has queued write to sector 3136 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 3 (reader) read from sector 154 was successful
+Info: application 3 (reader) has released a sector descriptor.
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 2963 
+Info: application 10 has queued read of sector 2963 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 9 (writer) write to sector 786 was successful
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing read of sector 3869 
+Blocking read complete for process id: 9 
+Info: application 9 has queued read of sector 3869 (blocking)
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing write to sector 1421
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 4 
+Info: application 4 has queued write to sector 1421 (blocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 2214
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 7 
+Info: application 7 has queued write to sector 2214 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 8 (reader) read from sector 51 was successful
+Info: application 8 (reader) has released a sector descriptor.
+[Device> sector 2284 successfully read by process 4
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3187 successfully written by process 6
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1680 successfully read by process 7
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3136 successfully written by process 2
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1421 successfully written by process 4
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2858 successfully read by process 5
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing read of sector 2511 
+Blocking read complete for process id: 0 
+Info: application 0 has queued read of sector 2511 (blocking)
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 59 
+Blocking read complete for process id: 1 
+Info: application 1 has queued read of sector 59 (blocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 0 (writer) write to sector 3721 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 6 (writer) write to sector 3187 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 2963 was unsuccessful
+Info: application 10 (reader) has released a sector descriptor.
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing write to sector 2133
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 9 has queued write to sector 2133 (nonblocking)
+Voucher being attempted to be redeemed 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 733 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 7 (reader) read from sector 1680 was successful
+Info: application 7 (reader) has released a sector descriptor.
+Read voucher compared
+Info: application 9 (reader) read from sector 3869 was unsuccessful
+Info: application 9 (reader) has released a sector descriptor.
+Info: application 3 has acquired a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 2475 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 8 (writer) write to sector 1592 was successful
+Info: application 6 (reader) has released a sector descriptor.
+Info: application 3 is queueing read of sector 3666 
+Blocking read complete for process id: 3 
+Info: application 3 has queued read of sector 3666 (blocking)
+[Device> sector 2214 successfully written by process 7
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2133 successfully written by process 9
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2963 successfully read by process 10
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3869 successfully read by process 9
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2511 successfully read by process 0
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 59 successfully read by process 1
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 59 was successful
+Info: application 1 (reader) has released a sector descriptor.
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing write to sector 3677
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 1 
+Info: application 1 has queued write to sector 3677 (blocking)
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing write to sector 1228
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 3 has queued write to sector 1228 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 5 (writer) write to sector 2801 was successful
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 1354 
+Blocking read complete for process id: 2 
+Info: application 2 has queued read of sector 1354 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 4 (reader) read from sector 2284 was successful
+Info: application 4 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 2858 was successful
+Info: application 5 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 4 (writer) write to sector 1421 was successful
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 1154 
+Blocking read complete for process id: 6 
+Info: application 6 has queued read of sector 1154 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 3 (reader) read from sector 3666 was unsuccessful
+Info: application 3 (reader) has released a sector descriptor.
+[Device> sector 3677 successfully written by process 1
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 3666 successfully read by process 3
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1228 successfully written by process 3
+Written to disk 
+Waiting for an item to enter the write buffer
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 3131
+Voucher being attempted to be redeemed 
+Write voucher compared
+Entered non-blocking-write-sector 
+Info: application 2 (writer) write to sector 3136 was successful
+Complete non-blocking write sector 
+Info: application 5 has queued write to sector 3131 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 (writer) write to sector 2214 was successful
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 1468 
+Info: application 8 has queued read of sector 1468 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 2578
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 6 has queued write to sector 2578 (nonblocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 4052 
+Blocking read complete for process id: 10 
+Info: application 10 has queued read of sector 4052 (blocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 1064
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 10 has queued write to sector 1064 (nonblocking)
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing write to sector 3620
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 8 
+Info: application 8 has queued write to sector 3620 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 1154 was unsuccessful
+Info: application 6 (reader) has released a sector descriptor.
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing read of sector 860 
+Info: application 4 has acquired a sector descriptor.
+Blocking read complete for process id: 3 
+Info: application 4 is queueing write to sector 2231
+Info: application 3 has queued read of sector 860 (blocking)
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 4 
+Info: application 4 has queued write to sector 2231 (blocking)
+[Device> sector 1354 successfully read by process 2
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3131 successfully written by process 5
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1154 successfully read by process 6
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2578 successfully written by process 6
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1064 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 0 (reader) read from sector 2511 was successful
+Info: application 0 (reader) has released a sector descriptor.
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing write to sector 1106
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 0 
+Info: application 0 has queued write to sector 1106 (blocking)
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 591 
+Info: application 1 has queued read of sector 591 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 3 (writer) write to sector 1228 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 1 (writer) write to sector 3677 was successful
+Info: application 4 has acquired a sector descriptor.
+Info: application 4 is queueing read of sector 1876 
+Info: application 4 has queued read of sector 1876 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 9 (writer) write to sector 2133 was successful
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 2702 
+Info: application 7 has queued read of sector 2702 (nonblocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing read of sector 3724 
+Info: application 9 has queued read of sector 3724 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 4052 was unsuccessful
+Info: application 10 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 6 (writer) write to sector 2578 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 3 (reader) read from sector 860 was unsuccessful
+Info: application 3 (reader) has released a sector descriptor.
+[Device> sector 3620 successfully written by process 8
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1468 successfully read by process 8
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2231 successfully written by process 4
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1106 successfully written by process 0
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 4052 successfully read by process 10
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Info: application 0 has acquired a sector descriptor.
+Info: application 0 is queueing read of sector 3657 
+Blocking read complete for process id: 0 
+Info: application 0 has queued read of sector 3657 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 591 was unsuccessful
+Info: application 1 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 2 (reader) read from sector 1354 was successful
+Info: application 2 (reader) has released a sector descriptor.
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 2881 
+Info: application 5 has queued read of sector 2881 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 5 (writer) write to sector 3131 was successful
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing write to sector 3853
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 7 has queued write to sector 3853 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 10 (writer) write to sector 1064 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 8 (reader) read from sector 1468 was successful
+Info: application 8 (reader) has released a sector descriptor.
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 3768 
+Info: application 10 has queued read of sector 3768 (nonblocking)
+Info: application 9 has acquired a sector descriptor.
+Info: application 9 is queueing write to sector 1768
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 9 has queued write to sector 1768 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 1440 
+Blocking read complete for process id: 6 
+Info: application 6 has queued read of sector 1440 (blocking)
+[Device> sector 860 successfully read by process 3
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 3853 successfully written by process 7
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 591 successfully read by process 1
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 1768 successfully written by process 9
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1876 successfully read by process 4
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 0 (writer) write to sector 1106 was successful
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 3239 
+Blocking read complete for process id: 1 
+Info: application 1 has queued read of sector 3239 (blocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 2070 
+Blocking read complete for process id: 2 
+Info: application 2 has queued read of sector 2070 (blocking)
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing write to sector 1352
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 2 
+Info: application 2 has queued write to sector 1352 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 5 (reader) read from sector 2881 was unsuccessful
+Info: application 5 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 8 (writer) write to sector 3620 was successful
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 4 (writer) write to sector 2231 was successful
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing read of sector 2699 
+Info: application 8 has queued read of sector 2699 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 10 (reader) read from sector 3768 was unsuccessful
+Info: application 10 (reader) has released a sector descriptor.
+Info: application 3 has acquired a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 9 (writer) write to sector 1768 was successful
+Info: application 3 is queueing read of sector 2315 
+Info: application 3 has queued read of sector 2315 (nonblocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 6 (reader) read from sector 1440 was unsuccessful
+Info: application 6 (reader) has released a sector descriptor.
+[Device> sector 1352 successfully written by process 2
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 2702 successfully read by process 7
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+Voucher being attempted to be redeemed 
+Info: application 3 has acquired a sector descriptor.
+Info: application 3 is queueing write to sector 2640
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 3 has queued write to sector 2640 (nonblocking)
+Read voucher compared
+Info: application 0 (reader) read from sector 3657 was unsuccessful
+Info: application 0 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 1 (reader) read from sector 3239 was unsuccessful
+Info: application 1 (reader) has released a sector descriptor.
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing write to sector 1106
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 1 
+Info: application 1 has queued write to sector 1106 (blocking)
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 2 (reader) read from sector 2070 was unsuccessful
+Info: application 2 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 4 (reader) read from sector 1876 was successful
+Info: application 4 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 2 (writer) write to sector 1352 was successful
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 7 (reader) read from sector 2702 was successful
+Info: application 7 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Read voucher compared
+Info: application 9 (reader) read from sector 3724 was unsuccessful
+Info: application 9 (reader) has released a sector descriptor.
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 7 (writer) write to sector 3853 was successful
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing write to sector 2501
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 10 has queued write to sector 2501 (nonblocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing write to sector 3003
+Entered non-blocking-write-sector 
+Complete non-blocking write sector 
+Info: application 6 has queued write to sector 3003 (nonblocking)
+Info: application 10 has acquired a sector descriptor.
+Info: application 10 is queueing read of sector 1363 
+Blocking read complete for process id: 10 
+Info: application 10 has queued read of sector 1363 (blocking)
+Info: application 6 has acquired a sector descriptor.
+Info: application 6 is queueing read of sector 1263 
+Blocking read complete for process id: 6 
+Info: application 6 has queued read of sector 1263 (blocking)
+[Device> sector 3724 successfully read by process 9
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2640 successfully written by process 3
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 1106 successfully written by process 1
+Written to disk 
+Waiting for an item to enter the write buffer
+[Device> sector 3657 successfully read by process 0
+Request completed, success: 1, result returned to voucher 
+Waiting for items to be added to readBuffer 
+Acquired the latest voucher 
+[Device> sector 2501 successfully written by process 10
+Written to disk 
+Waiting for an item to enter the write buffer
+Info: application 1 has acquired a sector descriptor.
+Info: application 1 is queueing read of sector 3760 
+Info: application 1 has queued read of sector 3760 (nonblocking)
+Voucher being attempted to be redeemed 
+Write voucher compared
+Info: application 3 (writer) write to sector 2640 was successful
+Info: application 2 has acquired a sector descriptor.
+Info: application 2 is queueing read of sector 961 
+Blocking read complete for process id: 2 
+Info: application 2 has queued read of sector 961 (blocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing write to sector 1882
+Entered blocking-write-sector 
+Voucher created 
+Blocking write complete for process id: 5 
+Info: application 5 has queued write to sector 1882 (blocking)
+Info: application 5 has acquired a sector descriptor.
+Info: application 5 is queueing read of sector 1502 
+Blocking read complete for process id: 5 
+Info: application 5 has queued read of sector 1502 (blocking)
+Info: application 7 has acquired a sector descriptor.
+Info: application 7 is queueing read of sector 1463 
+Blocking read complete for process id: 7 
+Info: application 7 has queued read of sector 1463 (blocking)
+Info: application 8 has acquired a sector descriptor.
+Info: application 8 is queueing write to sector 282
+Entered blocking-write-sector 
+Voucher created 
+Blocking write comple

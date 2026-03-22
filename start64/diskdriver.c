@@ -12,7 +12,6 @@
 #include <string.h>
 
 BoundedBuffer *write_buffer, *read_buffer;
-GQueue *write_results_queue, *read_results_queue;
 DiskDevice *diskDevice;
 FreeSectorDescriptorStore *fsds_pointer;
 BoundedBuffer *voucher_mem, *appRequest_mem;
@@ -23,13 +22,16 @@ typedef struct voucher {
     char *type;
     SectorDescriptor *sd;
     int success;
+    int complete;
+    pthread_cond_t finished;
+    pthread_mutex_t lock;
 } Voucher;
 
 // Static remains outside of functions
 static Voucher vouchers[20];
 
 void * read_thread_method(void* args){
-    args;
+    (void)args;
     printf("I have entered the read thread \n");
     while(1){
         printf("Waiting for items to be added to readBuffer \n");
@@ -38,6 +40,8 @@ void * read_thread_method(void* args){
         int success = read_sector(diskDevice, req->sd);
         // Return indication of success
         req->success = success;
+        req->complete = 1;
+        pthread_cond_signal(&req->finished);
         printf("Request completed, success: %i, result returned to voucher \n", success);
     }
     printf("I escaped the while loop \n");
@@ -45,18 +49,19 @@ void * read_thread_method(void* args){
 }
 
 void * write_thread_method(void* args){
-    args;
+    (void)args;
     printf("I have entered the write thread method \n");
     while(1){
         printf("Waiting for an item to enter the write buffer\n");
         Voucher * req = blockingReadBB(write_buffer);
         int success = write_sector(diskDevice, req->sd);
         // Free sector descriptor and return to store, set pointer to NULL
-        printf("%lu \n", sector_descriptor_get_pid(req->sd));
         init_sector_descriptor(req->sd);
         blocking_put_sd(fsds_pointer, req->sd);
         req->sd = NULL;
         req->success = success;        
+        req->complete = 1;
+        pthread_cond_signal(&req->finished);
         printf("Written to disk \n");
     }
     printf("I escaped the while loop \n");
@@ -73,8 +78,6 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     // Initialise two bounded buffer queues - no. of items can change
     write_buffer = createBB(20);
     read_buffer = createBB(20);
-    write_results_queue = create_gqueue();
-    read_results_queue = create_gqueue();
     appRequest_mem = createBB(20);
     voucher_mem = createBB(20);
 
@@ -190,16 +193,23 @@ int nonblocking_read_sector(SectorDescriptor *sd, Voucher**v){
  */
 int redeem_voucher(Voucher *v, SectorDescriptor **sd){    
 
+    while(v->complete != 1){
+        pthread_cond_wait(&v->finished, &v->lock);
+    }
+
     char *type = v->type;
     printf("Voucher being attempted to be redeemed \n");
+    int result = v->success;
     if(strcmp(type, "W") == 0){
         printf("Write voucher compared\n");
-        return v->success;
     } else {
         *sd = v->sd;
         printf("Read voucher compared\n");
-        return v->success;
     }
+
+    blockingWriteBB(voucher_mem, v);
+
+    return result;
 
     printf("%li ", sector_descriptor_get_pid(*sd));
 }
