@@ -12,7 +12,7 @@
 
 BoundedBuffer *write_buffer, *read_buffer;
 GQueue *write_results_queue, *read_results_queue;
-DiskDevice *dd;
+DiskDevice *diskDevice;
 FreeSectorDescriptorStore *fsds_pointer;
 BoundedBuffer *voucher_mem, *appRequest_mem;
 
@@ -34,8 +34,8 @@ void * read_thread_method(void* args){
         printf("Waiting for items to be added to readBuffer \n");
         // Load request - currently never runs as the queue is empty
         Voucher * req = blockingReadBB(read_buffer);
-        printf("Acquired the latest appRequest \n");
-        int success = read_sector(dd, (req)->sd);
+        printf("Acquired the latest voucher \n");
+        int success = read_sector(diskDevice, (req)->sd);
         // Return indication of success
         req->success = success;
         printf("Request completed, success: %i, result returned to voucher \n", success);
@@ -49,7 +49,7 @@ void * write_thread_method(void* args){
     while(1){
         printf("Waiting for an item to enter the buffer\n");
         void * item = blockingReadBB(write_buffer);
-        int success = write_sector(dd, item);
+        int success = write_sector(diskDevice, item);
         unsigned long pid = sector_descriptor_get_pid(item);
         // Free sector descriptor and return to store, set pointer to NULL
         init_sector_descriptor(item);
@@ -92,7 +92,7 @@ void init_disk_driver(DiskDevice *dd, void *mem_start, unsigned long mem_length,
     }
 
     //dd = construct_disk_device();
-    dd = dd;
+    dd = diskDevice;
 
     printf("About to initisalise thread \n");
     pthread_t read_thread, write_thread;
