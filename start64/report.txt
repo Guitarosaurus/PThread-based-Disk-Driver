@@ -1,0 +1,8 @@
+Hannah Weir - 2881720W
+COMPSCI4011 - Assessed Exerise
+This is my own work
+
+The program runs with no seg faults or errors or bugs.
+It is fully functional and does compile on the uni vm.
+
+The design is attached in the zip

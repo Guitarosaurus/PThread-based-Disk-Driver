@@ -1,3 +1,6 @@
+// Hannah Weir - 2881720W - COMPSCI14011 - Assessed Exercise
+// This is my own work
+
 #include "diskdevice.h"
 #include "freesectordescriptorstore.h"
 #include "freesectordescriptorstore_full.h"
